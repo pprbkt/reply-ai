@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "Local Reply Suggestions (Ollama)",
+  "version": "1.0.0",
+  "description": "Suggests replies to posts on X/Twitter and Reddit using a local Ollama model. Nothing leaves your machine.",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "http://localhost:11434/*",
+    "http://127.0.0.1:11434/*",
+    "https://twitter.com/*",
+    "https://x.com/*",
+    "https://www.reddit.com/*",
+    "https://old.reddit.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://twitter.com/*", "https://x.com/*"],
+      "js": ["shared-settings.js", "content-common.js", "content-twitter.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://www.reddit.com/*", "https://old.reddit.com/*"],
+      "js": ["shared-settings.js", "content-common.js", "content-reddit.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Local Reply Suggestions"
+  }
+}

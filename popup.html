@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Local Reply Suggestions</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header>
+    <h1>Local Reply Suggestions</h1>
+    <p class="subtitle">Powered by your own Ollama model. Nothing leaves your machine.</p>
+  </header>
+
+  <main>
+    <section class="field-group">
+      <label for="ollamaUrl">Ollama URL</label>
+      <input id="ollamaUrl" type="text" placeholder="http://localhost:11434" />
+    </section>
+
+    <section class="field-group">
+      <label for="model">Model</label>
+      <div class="model-row">
+        <select id="model"></select>
+        <button id="checkBtn" type="button">Check connection</button>
+      </div>
+      <p id="connectionStatus" class="hint"></p>
+    </section>
+
+    <section class="field-group">
+      <label for="numSuggestions">Number of suggestions</label>
+      <input id="numSuggestions" type="number" min="1" max="6" />
+    </section>
+
+    <section class="field-group">
+      <label for="tone">Tone</label>
+      <select id="tone">
+        <option value="witty">Witty</option>
+        <option value="supportive">Supportive</option>
+        <option value="professional">Professional</option>
+        <option value="sarcastic">Sarcastic</option>
+        <option value="contrarian">Politely contrarian</option>
+        <option value="curious">Curious / asks a question</option>
+        <option value="custom">Custom...</option>
+      </select>
+      <textarea id="customTone" rows="2" placeholder="Describe the tone you want"></textarea>
+    </section>
+
+    <section class="field-group toggles">
+      <label class="toggle-row">
+        <input id="enabledOnTwitter" type="checkbox" />
+        Enable on X / Twitter
+      </label>
+      <label class="toggle-row">
+        <input id="enabledOnReddit" type="checkbox" />
+        Enable on Reddit
+      </label>
+    </section>
+
+    <button id="saveBtn" type="button" class="primary-btn">Save settings</button>
+    <p id="saveStatus" class="hint"></p>
+  </main>
+
+  <footer>
+    <p>Make sure Ollama is running locally (<code>ollama serve</code>) and the model is pulled (<code>ollama pull llama3.1</code>).</p>
+  </footer>
+
+  <script src="shared-settings.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
