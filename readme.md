@@ -118,7 +118,7 @@ Try a different tone preset, write a custom one, or move to a larger, better-ins
 ## ▌ Project Structure
 
 ```
-ai-reply-extension/
+reply-ai/
 ├── manifest.json
 ├── shared-settings.js
 ├── background.js
